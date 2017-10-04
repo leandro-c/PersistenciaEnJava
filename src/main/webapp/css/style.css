@@ -1,0 +1,93 @@
+.bichoPedia {
+  min-height: 487px;
+  background: #C60019;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.bichoPedia #logo {
+  height: 100px;
+  width: auto;
+  float: right;
+}
+
+.bichoPedia .boxes {
+  overflow: hidden;
+}
+
+.especieFullBoxModal {
+  width: 450px !important;
+}
+
+.especieFullBox {
+  padding: 10px;
+  overflow: hidden;
+  text-align: center;
+}
+.especieFullBox .especieNombre {
+  color: #C60019;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 50px;
+  -webkit-text-stroke: 1px black;
+}
+.especieFullBox dl {
+   float:left;
+   width: 255px;
+}
+.especieFullBox dt, .especieForm dt {
+   float:left;
+   clear:left;
+   text-align:right;
+   width:115px;
+   color:#C60019;
+}
+.especieFullBox dd, .especieForm dd {
+   float:left;
+   margin-left: 5px;
+   color:#999
+}
+.especieFullBox img {
+  height: 200px;
+  width: 160px;
+  margin-right: 10px;
+  float: left
+}
+.especieFullBox .crearBicho {
+  clear:both;
+}
+
+.especieForm {
+  overflow: hidden;
+  margin: 10px;
+}
+.especieForm dl {
+   width: 500px;
+}
+.submitEspecie {
+  clear:both;
+  float: right;
+  margin-top: 10px;
+}
+
+.bichoPedia .especieBox {
+  width: 100px;
+  float: left;
+  text-align: center;
+  margin: 5px;
+  background-color: rgba(255, 255, 255, 0.5);;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.bichoPedia .especieBox:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.bichoPedia .especieBox img {
+  height: 100px;
+  width: 80px;
+  margin-bottom: 4px;
+}

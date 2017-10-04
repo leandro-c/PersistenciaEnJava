@@ -1,0 +1,176 @@
+package ar.edu.unq.epers.bichomon.backend.model.bicho;
+
+import ar.edu.unq.epers.bichomon.backend.model.entrenador.Entrenador;
+import ar.edu.unq.epers.bichomon.backend.model.especie.Especie;
+import ar.edu.unq.epers.bichomon.backend.model.ubicacion.Ubicacion;
+
+import javax.persistence.*;
+import java.util.List;
+
+/**
+ * Un {@link Bicho} existente en el sistema, el mismo tiene un nombre
+ * y pertenece a una {@link Especie} en particular.
+ * 
+ * @author Charly Backend
+ */
+@Entity
+public class Bicho {
+<<<<<<< Updated upstream
+=======
+	
+	@Id
+	private long id;
+	private Especie especie;
+	private int energia;
+>>>>>>> Stashed changes
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+
+	@ManyToOne(cascade= CascadeType.ALL)
+	private Especie especie;
+
+	private int energia;
+	private int edad;
+	private int nivel;
+	private int cantVictorias;
+
+	@ManyToOne(cascade= CascadeType.ALL)
+	private Entrenador entrenador;
+
+	@ManyToOne(cascade= CascadeType.ALL)
+    private Entrenador abandonador;
+
+	@ManyToOne(cascade= CascadeType.ALL)
+	private Entrenador guarderia;
+
+	@ManyToOne(cascade= CascadeType.ALL)
+	private Ubicacion ubicacion;
+
+	@OneToMany(cascade= CascadeType.ALL)
+	List<Entrenador> entrenadoresALosQuePertenecio;
+
+	/** constructor sin parametros para recuperar desde la persistencia */
+	public Bicho(){}
+
+	public Bicho(Especie especie) {
+		this.especie = especie;
+		this.edad = 0;
+		this.energia = 100;
+		this.nivel = 1;
+	}
+
+	public int getId() {
+		return this.id;
+	}
+
+<<<<<<< Updated upstream
+=======
+	
+	/** constructor sin parametros para recuperar desde la persistencia 
+	 * @param especie2 */
+	public Bicho(Especie especie){
+>>>>>>> Stashed changes
+
+	public Especie getEspecie() {
+		return this.especie;
+	}
+	
+	/**
+	 * @return la cantidad de puntos de energia de este bicho en
+	 * particular. Dicha cantidad crecerá (o decrecerá) conforme
+	 * a este bicho participe en combates contra otros bichomones.
+	 */
+	public int getEnergia() {
+		return this.energia;
+	}
+
+	public void setEnergia(int energia) {
+		this.energia = energia;
+	}
+
+	public void evolucionar(){
+<<<<<<< Updated upstream
+		if(this.especie.puedoEvolucionar(this) && this.especie.tengoEvolucion()){
+=======
+		if(this.especie.puedoEvolucionar(this)){
+>>>>>>> Stashed changes
+			this.especie = this.especie.getEvolucion();
+		}
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public int getNivel() {
+		return nivel;
+	}
+
+	public boolean pertenecioA(Entrenador entrenador) {
+		return entrenadoresALosQuePertenecio.contains(entrenador);
+	}
+
+
+	public Bicho primeraEvolucion() {
+		Bicho primeraEvolucion = this;
+		while (primeraEvolucion.getPrevolucion() != null) {
+			primeraEvolucion = primeraEvolucion.getPrevolucion();
+		}
+		return primeraEvolucion;
+	}
+
+	public Bicho getPrevolucion() {
+		return null;
+	}
+
+	public void setNivel(int nivel) {
+		this.nivel = nivel;
+	}
+
+	public Entrenador getEntrenador(){
+	    return this.entrenador;
+    }
+
+	public void setEntrenador( Entrenador entrenador){
+	    this.entrenador = entrenador;
+    }
+
+	public int getCantVictorias() {
+		return cantVictorias;
+	}
+
+	public void setCantVictorias(int cantVictorias) {
+		this.cantVictorias = cantVictorias;
+	}
+
+    public Entrenador getAbandonador(){
+        return this.abandonador;
+    }
+
+    public void setAbandonador( Entrenador abandonador ){
+        this.abandonador = abandonador;
+    }
+
+    /**
+     * Al abandonar un bicho rompo la relacion de entrenador y agrego una relacion de abandono
+     */
+    public void serAbandonado() {
+        setAbandonador( getEntrenador() );
+        setEntrenador( null );
+    }
+
+	public void setEspecie(Especie especie) {
+		this.especie = especie;
+	}
+
+	public void setEntrenadoresALosQuePertenecio(List<Entrenador> yaPertenecio) {
+		this.entrenadoresALosQuePertenecio = yaPertenecio;
+	}
+
+}
